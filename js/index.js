@@ -1,4 +1,7 @@
 /*код для бургер-меню*/
+
+
+
 window.addEventListener('DOMContentLoaded', function(open) {
     document.querySelector('.burger').addEventListener('click', function() {
         document.querySelector('.menu').classList.toggle('is-active')
@@ -15,59 +18,53 @@ window.addEventListener('DOMContentLoaded', function() {
 /*выподающие списки*/
 
 window.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.list1').addEventListener('click', function() {
-        document.querySelector('.submenu').classList.toggle('show')
+    document.querySelector('.click1').addEventListener('click', function() {
+        document.querySelector('.list1').classList.toggle('show');
+    })
+})
+
+window.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.click2').addEventListener('click', function() {
+        document.querySelector('.list2').classList.toggle('show');
     })
 })
 
 
 window.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.list2').addEventListener('click', function() {
-        document.querySelector('.submenu').classList.toggle('show')
+    document.querySelector('.click3').addEventListener('click', function() {
+        document.querySelector('.list3').classList.toggle('show');
     })
 })
 
 window.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.list3').addEventListener('click', function() {
-        document.querySelector('.submenu').classList.toggle('show')
+    document.querySelector('.click4').addEventListener('click', function() {
+        document.querySelector('.list4').classList.toggle('show');
     })
 })
 
-/*
-function list1() {
-  document.getElementById("list1").classList.toggle('show');
-}
 
-function list2() {
-  document.getElementById("list2").classList.toggle('show');
-}
+window.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.click5').addEventListener('click', function() {
+        document.querySelector('.list5').classList.toggle('show');
+    })
+})
 
-function list3() {
-  document.getElementById("list3").classList.toggle('show');
-}
 
-function list4() {
-  document.getElementById("list4").classList.toggle('show');
-}
 
-function list5() {
-  document.getElementById("list5").classList.toggle('show');
-}
+/* window.onclick = function(event) {
+     if (!event.target.matches('.click')) {
 
-window.onclick = function (event) {
-  if (!event.target.matches('.click')) {
-
-    var dropdowns = document.querySelector('.submenu');
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-
+         var dropdowns = document.querySelector('.submenu');
+         var i;
+         for (i = 0; i < dropdowns.length; i++) {
+             var openDropdown = dropdowns[i];
+             if (openDropdown.classList.contains('show')) {
+                 openDropdown.classList.remove('show');
+             }
+         }
+     }
+ }
+*/
 /*Swiper для блока Hero*/
 
 const swiper = new Swiper('.hero__swiper', {

@@ -49,22 +49,6 @@ window.addEventListener('DOMContentLoaded', function() {
     })
 })
 
-
-
-/* window.onclick = function(event) {
-     if (!event.target.matches('.click')) {
-
-         var dropdowns = document.querySelector('.submenu');
-         var i;
-         for (i = 0; i < dropdowns.length; i++) {
-             var openDropdown = dropdowns[i];
-             if (openDropdown.classList.contains('show')) {
-                 openDropdown.classList.remove('show');
-             }
-         }
-     }
- }
-*/
 /*Swiper для блока Hero*/
 
 const swiper = new Swiper('.hero__swiper', {
@@ -77,5 +61,3 @@ const swiper = new Swiper('.hero__swiper', {
         disableOnInteraction: false,
     },
 });
-
-/**/

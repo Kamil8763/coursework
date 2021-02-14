@@ -20,6 +20,13 @@
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
+    font-weight: 700;
+    src: local(''), url('../font/open-sans-v18-cyrillic-700.woff2') format('woff2'), url('../font/open-sans-v18-cyrillic-700.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
     font-weight: 800;
     src: local(''), url('../font/open-sans-v18-cyrillic-800.woff2') format('woff2'), url('../font/open-sans-v18-cyrillic-800.woff') format('woff');
 }
@@ -204,6 +211,7 @@ input {
 
 .text-header:hover {
     color: var(--color-C283F3);
+    transition: color 0.3s ease-in-out;
 }
 
 .menu__link:active,
@@ -220,7 +228,7 @@ input {
 }
 
 .header__button {
-    margin-left: 96px;
+    margin-left: 114px;
     padding-left: 21px;
     font-weight: 400;
     background-image: url(../img/icon-enter.png);
@@ -282,10 +290,10 @@ input {
 }
 
 .submenu {
-    display: none;
     position: absolute;
+    opacity: 0;
     z-index: 10;
-    top: 48px;
+    top: 47px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -294,10 +302,16 @@ input {
     height: 300px;
     padding: 40px;
     background-color: var(--color-rgba);
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .show {
-    display: block;
+    opacity: 1;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .submenu__item {
@@ -432,8 +446,16 @@ input {
     line-height: 25px;
 }
 
+.simplebar-track.simplebar-vertical {
+    top: 40px;
+    right: 19px;
+    width: 6px;
+    height: 220px;
+    background-color: black;
+}
+
 .simplebar-scrollbar::before {
-    width: 5px;
+    width: 2px;
     height: 28px;
     background: #9D5CD0;
 }
@@ -541,19 +563,17 @@ input {
 .hero__title {
     max-width: 600px;
     font-size: 72px;
-    font-weight: 800;
-    line-height: 86px;
-    letter-spacing: -1.4px;
+    font-weight: 700;
+    line-height: 84px;
     color: var(--color-fff);
 }
 
 .hero__text {
     max-width: 600px;
-    margin-top: 15px;
+    margin-top: 19px;
     font-size: 18px;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 30px;
-    letter-spacing: -0.4px;
     color: var(--color-fff);
 }
 
@@ -639,6 +659,9 @@ input {
 .about__text {
     color: var(--color-333);
 }
+
+
+/*GALLERY****************************************************************************************************************/
 
 
 /***************************************************************новый блок***************************************************************/
@@ -766,9 +789,9 @@ input {
         -o-transition: display 0.3s ease-in-out;
         transition: display 0.3s ease-in-out;
     }
-    .not-active {
+    /* .not-active {
         display: none;
-    }
+    }*/
     .form__svg {
         -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
@@ -928,13 +951,12 @@ input {
     /*HERO 320***********************************************/
     .hero__container {
         padding-top: 79px;
-        padding-bottom: 44px;
+        padding-bottom: 45px;
     }
     .hero__title {
         max-width: 290px;
         font-size: 32px;
         line-height: 36px;
-        letter-spacing: 1px;
     }
     .hero__text {
         max-width: 290px;

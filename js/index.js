@@ -69,7 +69,6 @@ document.addEventListener('click', function(e) {
         toggleList1();
     }
 });
-/********************************************************************************/
 
 const btnClick2 = document.querySelector('.click2');
 const list2 = document.querySelector('.list2');
@@ -156,7 +155,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-/*Swiper для блока Hero*/
+/*Swiper для блока Hero**************************************************************************/
 
 const swiper = new Swiper('.hero__swiper', {
     // Optional parameters
@@ -169,4 +168,44 @@ const swiper = new Swiper('.hero__swiper', {
     },
 });
 
-/*секция Галерея*/
+/*секция Галерея************************************************************************************************************/
+
+
+/*choices js фильтр******************************************************/
+
+const element = document.querySelector('.select');
+const choices = new Choices(element, {
+    searchEnabled: false,
+    silent: false,
+    itemSelectText: ' ',
+
+});
+
+/*Swiper gallery***********************************************************/
+
+const swiper1 = new Swiper('.swiper__gallery', {
+    loop: true,
+    slidesPerView: 2,
+    slidesPerColumn: 2,
+    spaceBetween: 50,
+
+    pagination: {
+        el: '.pagination__gallery',
+        type: 'fraction',
+    },
+
+    navigation: {
+        nextEl: '.next__gallery',
+        prevEl: '.prev__gallery',
+    },
+
+    breakpoints: {
+
+        1500: {
+            slidesPerView: 3,
+            slidesPerColumn: 2,
+            spaceBetween: 50
+        },
+    }
+
+});

@@ -2,7 +2,7 @@
 const btnMenu = document.querySelector('.burger');
 const menu = document.querySelector('.header__menu');
 const toggleMenu = function() {
-    menu.classList.toggle('is-active');
+    menu.classList.toggle('is-active-menu');
 }
 
 btnMenu.addEventListener('click', function(e) {
@@ -14,7 +14,7 @@ document.addEventListener('click', function(e) {
     const target = e.target;
     const its_menu = target == menu || menu.contains(target);
     const its_btnMenu = target == btnMenu;
-    const menu_is_active = menu.classList.contains('is-active');
+    const menu_is_active = menu.classList.contains('is-active-menu');
 
     if (!its_menu && !its_btnMenu && menu_is_active) {
         toggleMenu();
@@ -185,9 +185,9 @@ const choices = new Choices(element, {
 
 const swiper1 = new Swiper('.swiper__gallery', {
     loop: true,
-    slidesPerView: 2,
+    slidesPerView: 1,
     slidesPerColumn: 2,
-    spaceBetween: 50,
+    spaceBetween: 0,
 
     pagination: {
         el: '.pagination__gallery',
@@ -201,10 +201,22 @@ const swiper1 = new Swiper('.swiper__gallery', {
 
     breakpoints: {
 
-        1500: {
+        1450: {
             slidesPerView: 3,
             slidesPerColumn: 2,
             spaceBetween: 50
+        },
+
+        730: {
+            slidesPerView: 2,
+            slidesPerColumn: 2,
+            spaceBetween: 34
+        },
+
+        321: {
+            slidesPerView: 1,
+            slidesPerColumn: 2,
+            spaceBetween: 34
         },
     }
 

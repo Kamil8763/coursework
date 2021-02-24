@@ -760,6 +760,12 @@ input {
 
 .info__link {
     color: var(--color-9D5CD0);
+    transition: color 0.3s ease-in-out;
+}
+
+.info__link:hover {
+    color: var(--color-C283F3);
+    transition: color 0.3s ease-in-out;
 }
 
 
@@ -812,8 +818,7 @@ input {
 }
 
 .choices__list--dropdown .choices__item--selectable.is-highlighted {
-    border-top: 1px solid #999;
-    border-bottom: 1px solid #999;
+    outline: 1px solid #999;
     border-radius: 0px;
     background-color: rgba(0, 0, 0, 0);
     font-size: 16px;
@@ -917,6 +922,17 @@ input {
     height: 30px;
     border-radius: 50%;
     line-height: 28px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.swiper-button-next:hover:after {
+    transition: background-color 0.3s ease-in-out;
+    background-color: var(--color-C283F3);
+}
+
+.swiper-button-prev:hover:after {
+    transition: background-color 0.3s ease-in-out;
+    background-color: var(--color-C283F3);
 }
 
 .swiper-container .swiper-button-next::after {
@@ -928,7 +944,7 @@ input {
 }
 
 .swiper-container .swiper-button-next {
-    left: 115px;
+    left: 120px;
     right: 0px;
     top: 43px;
     bottom: 0px;
@@ -944,7 +960,7 @@ input {
 }
 
 .swiper-container .swiper-pagination {
-    width: 55px;
+    min-width: 55px;
     height: 20px;
     top: 34px;
     left: 52px;

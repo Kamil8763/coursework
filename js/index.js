@@ -46,30 +46,6 @@ document.addEventListener('click', function(e) {
 });
 
 /*выподающие списки**********************************************************************************************************/
-
-
-
-const btnClick1 = document.querySelector('.click1');
-const list1 = document.querySelector('.list1');
-const toggleList1 = function() {
-    list1.classList.toggle('show');
-}
-
-btnClick1.addEventListener('click', function(e) {
-    toggleList1();
-});
-
-document.addEventListener('click', function(e) {
-    const targetList1 = e.target;
-    const its_list1 = targetList1 == list1 || list1.contains(targetList1);
-    const its_btnList1 = targetList1 == btnClick1;
-    const list1_is_active = list1.classList.contains('show');
-
-    if (!its_list1 && !its_btnList1 && list1_is_active) {
-        toggleList1();
-    }
-});
-
 const btnClick2 = document.querySelector('.click2');
 const list2 = document.querySelector('.list2');
 const toggleList2 = function() {
@@ -221,3 +197,116 @@ const swiper1 = new Swiper('.swiper__gallery', {
     }
 
 });
+
+/*Catalog*****************************************************************/
+
+/*accordion*/
+
+var accordion = document.querySelector('.accordion');
+accordion.addEventListener('click', change);
+
+function change(event) {
+    var targ = event.target;
+    if (targ.tagName !== 'H3') return;
+    if (targ.classList.contains('select')) {
+        hideAll();
+    } else {
+        hideAll();
+        targ.classList.add('select');
+        showText(targ.nextElementSibling);
+    }
+}
+
+function hideAll() {
+    var h3El = accordion.querySelectorAll('h3');
+    var divEl = accordion.querySelectorAll('ul');
+    for (var i = 0; i < h3El.length; i++) {
+        h3El[i].classList.remove('select');
+    }
+    for (var i = 0; i < divEl.length; i++) {
+        divEl[i].style.height = '0';
+        divEl[i].style.padding = '0';
+    }
+}
+
+function showText(textEl) {
+    textEl.style.height = '342px';
+    textEl.style.paddingTop = '25px';
+}
+
+/*accordion4*/
+
+var accordion = document.querySelector('.accordion4');
+accordion.addEventListener('click', change);
+
+function change(event) {
+    var targ = event.target;
+    if (targ.tagName !== 'H3') return;
+    if (targ.classList.contains('select')) {
+        hideAll();
+    } else {
+        hideAll();
+        targ.classList.add('select');
+        showText(targ.nextElementSibling);
+    }
+}
+
+function hideAll() {
+    var h3El = accordion.querySelectorAll('h3');
+    var divEl = accordion.querySelectorAll('ul');
+    for (var i = 0; i < h3El.length; i++) {
+        h3El[i].classList.remove('select');
+    }
+    for (var i = 0; i < divEl.length; i++) {
+        divEl[i].style.height = '0';
+        divEl[i].style.padding = '0';
+    }
+}
+
+function showText(textEl) {
+    textEl.style.height = '342px';
+    textEl.style.paddingTop = '25px';
+}
+
+
+
+/*переклчение  информации с фото по художнику*/
+
+window.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.domenicoLink').addEventListener('click', function() {
+        document.querySelector('.domenico').classList.toggle('picture-active')
+    })
+})
+
+window.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.bernettoLink').addEventListener('click', function() {
+        document.querySelector('.bernetto').classList.toggle('picture-active')
+    })
+})
+
+window.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.domenicoLink4').addEventListener('click', function() {
+        document.querySelector('.domenico4').classList.toggle('picture-active')
+    })
+})
+
+window.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.bernettoLink4').addEventListener('click', function() {
+        document.querySelector('.bernetto4').classList.toggle('picture-active4')
+    })
+})
+
+/*Табы*/
+
+window.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.catalog__btn').forEach(function(tabBtn) {
+        tabBtn.addEventListener('click', function(event) {
+            const path = event.currentTarget.dataset.path;
+
+            document.querySelectorAll('.catalog__bottom').forEach(function(tabContent) {
+                tabContent.classList.remove('catalog__bottom--active')
+            })
+            document.querySelector(`[data-target="${path}"]`).classList.add('catalog__bottom--active');
+        })
+    })
+})

@@ -46,6 +46,27 @@ document.addEventListener('click', function(e) {
 });
 
 /*выподающие списки**********************************************************************************************************/
+const btnClick1 = document.querySelector('.click1');
+const list1 = document.querySelector('.list1');
+const toggleList1 = function() {
+    list1.classList.toggle('show');
+}
+
+btnClick1.addEventListener('click', function(e) {
+    toggleList1();
+});
+
+document.addEventListener('click', function(e) {
+    const targetList1 = e.target;
+    const its_list1 = targetList1 == list1 || list1.contains(targetList1);
+    const its_btnList1 = targetList1 == btnClick1;
+    const list1_is_active = list1.classList.contains('show');
+
+    if (!its_list1 && !its_btnList1 && list1_is_active) {
+        toggleList1();
+    }
+});
+
 const btnClick2 = document.querySelector('.click2');
 const list2 = document.querySelector('.list2');
 const toggleList2 = function() {
@@ -234,67 +255,76 @@ function showText(textEl) {
     textEl.style.paddingTop = '25px';
 }
 
-/*accordion4*/
-
-var accordion = document.querySelector('.accordion4');
-accordion.addEventListener('click', change);
-
-function change(event) {
-    var targ = event.target;
-    if (targ.tagName !== 'H3') return;
-    if (targ.classList.contains('select')) {
-        hideAll();
-    } else {
-        hideAll();
-        targ.classList.add('select');
-        showText(targ.nextElementSibling);
-    }
-}
-
-function hideAll() {
-    var h3El = accordion.querySelectorAll('h3');
-    var divEl = accordion.querySelectorAll('ul');
-    for (var i = 0; i < h3El.length; i++) {
-        h3El[i].classList.remove('select');
-    }
-    for (var i = 0; i < divEl.length; i++) {
-        divEl[i].style.height = '0';
-        divEl[i].style.padding = '0';
-    }
-}
-
-function showText(textEl) {
-    textEl.style.height = '342px';
-    textEl.style.paddingTop = '25px';
-}
-
 
 
 /*переклчение  информации с фото по художнику*/
 
-window.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.domenicoLink').addEventListener('click', function() {
-        document.querySelector('.domenico').classList.toggle('picture-active')
-    })
-})
+const btnBenedetto = document.querySelector('.benedettoLink');
+const benedetto = document.querySelector('.benedetto');
+const toggleCatalog = function() {
+    benedetto.classList.toggle('catalog__picture-active');
+}
 
-window.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.bernettoLink').addEventListener('click', function() {
-        document.querySelector('.bernetto').classList.toggle('picture-active')
-    })
-})
+btnBenedetto.addEventListener('click', function(e) {
+    toggleCatalog();
+});
 
-window.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.domenicoLink4').addEventListener('click', function() {
-        document.querySelector('.domenico4').classList.toggle('picture-active')
-    })
-})
+document.addEventListener('click', function(e) {
+    const target1 = e.target;
+    const its_menu1 = target1 == benedetto || benedetto.contains(target1);
+    const its_btnMenu1 = target1 == btnBenedetto;
+    const menu_is_active1 = benedetto.classList.contains('catalog__picture-active');
 
-window.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.bernettoLink4').addEventListener('click', function() {
-        document.querySelector('.bernetto4').classList.toggle('picture-active4')
-    })
-})
+    if (!its_menu1 && !its_btnMenu1 && menu_is_active1) {
+        toggleCatalog();
+    }
+});
+/**************************************************************/
+const btnDomenico = document.querySelector('.domenicoLink');
+const domenico = document.querySelector('.domenico');
+
+const toggleCatalog1 = function() {
+    domenico.classList.toggle('catalog__picture-active');
+}
+
+btnDomenico.addEventListener('click', function(e) {
+    toggleCatalog1();
+});
+
+document.addEventListener('click', function(e) {
+    const target2 = e.target;
+    const its_menu2 = target2 == domenico || domenico.contains(target2);
+    const its_btnMenu2 = target2 == btnDomenico;
+    const menu_is_active2 = domenico.classList.contains('catalog__picture-active');
+
+    if (!its_menu2 && !its_btnMenu2 && menu_is_active2) {
+        toggleCatalog1();
+    }
+});
+/***************************************************************************/
+
+const btnBergonione = document.querySelector('.bergonioneLink');
+const bergonione = document.querySelector('.bergonione ');
+
+const toggleCatalog2 = function() {
+    bergonione.classList.toggle('catalog__picture-active');
+}
+
+btnBergonione.addEventListener('click', function(e) {
+    toggleCatalog2();
+});
+
+document.addEventListener('click', function(e) {
+    const target3 = e.target;
+    const its_menu3 = target3 == bergonione || bergonione.contains(target3);
+    const its_btnMenu3 = target3 == btnBergonione;
+    const menu_is_active3 = bergonione.classList.contains('catalog__picture-active');
+
+    if (!its_menu3 && !its_btnMenu3 && menu_is_active3) {
+        toggleCatalog2();
+    }
+});
+
 
 /*Табы*/
 
@@ -303,10 +333,10 @@ window.addEventListener('DOMContentLoaded', function() {
         tabBtn.addEventListener('click', function(event) {
             const path = event.currentTarget.dataset.path;
 
-            document.querySelectorAll('.catalog__bottom').forEach(function(tabContent) {
-                tabContent.classList.remove('catalog__bottom--active')
+            document.querySelectorAll('.tabs').forEach(function(tabContent) {
+                tabContent.classList.remove('tabs-active')
             })
-            document.querySelector(`[data-target="${path}"]`).classList.add('catalog__bottom--active');
+            document.querySelector(`[data-target="${path}"]`).classList.add('tabs-active');
         })
     })
 })

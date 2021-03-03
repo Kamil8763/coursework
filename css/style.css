@@ -1080,24 +1080,6 @@ input {
     background-image: url(../img/tabXz.png);
 }
 
-.catalog__bottom {
-    display: none;
-}
-
-.catalog__product--block {
-    position: relative;
-    width: 50%;
-}
-
-
-/*.catalog__bottom.rus {
-    display: block;
-}*/
-
-.catalog__bottom--active {
-    display: block;
-}
-
 .catalog__text {
     max-width: 1080px;
     margin-bottom: 38px;
@@ -1105,6 +1087,27 @@ input {
     font-size: 16px;
     line-height: 32px;
     color: var(--color-333);
+}
+
+.catalog__product {
+    display: flex;
+    flex-direction: row;
+}
+
+.catalog__product--block {
+    position: relative;
+    width: 47%;
+}
+
+.catalog__picture {
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+}
+
+.catalog__picture-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .picture__info {
@@ -1140,34 +1143,15 @@ input {
     color: #333;
 }
 
-.catalog__product {
-    display: flex;
-    flex-direction: row;
-}
-
 .catalog__picture {
     top: 0;
     left: 0;
-    /* width: 50%;*/
     transition: 0.3s ease-in-out;
-}
-
-.domenico,
-.bernetto,
-.domenico4,
-.bernetto4 {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.picture-active,
-.picture-active4 {
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
 }
 
 .catalog__accordion {
     width: 50%;
+    margin-left: 50px;
 }
 
 .accordion__title {
@@ -1215,15 +1199,6 @@ input {
     transition: all 0.3s ease-in-out;
 }
 
-.accordion__list {
-    height: 0px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    overflow: hidden;
-    transition: 0.3s ease-in-out;
-}
-
 .accordion__title:hover {
     border-color: var(--color-9D5CD0);
     color: var(--color-9D5CD0);
@@ -1263,6 +1238,15 @@ input {
     border-left: 1px solid var(--color-fff);
     transform: rotate(45deg);
     transition: all 0.1s linear;
+}
+
+.accordion__list {
+    height: 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
 }
 
 .accordion__item {

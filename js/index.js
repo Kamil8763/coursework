@@ -257,6 +257,9 @@ function showText(textEl) {
 
 
 
+
+
+
 /*переклчение  информации с фото по художнику*/
 
 const btnBenedetto = document.querySelector('.benedettoLink');
@@ -279,6 +282,9 @@ document.addEventListener('click', function(e) {
         toggleCatalog();
     }
 });
+
+
+
 /**************************************************************/
 const btnDomenico = document.querySelector('.domenicoLink');
 const domenico = document.querySelector('.domenico');
@@ -324,7 +330,7 @@ document.addEventListener('click', function(e) {
         toggleCatalog2();
     }
 });
-
+/************************************************************************************/
 
 /*Табы*/
 

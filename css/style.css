@@ -1249,6 +1249,14 @@ input {
     transition: 0.3s ease-in-out;
 }
 
+.tabs {
+    display: none;
+}
+
+.tabs-active {
+    display: block;
+}
+
 .accordion__item {
     width: 25%;
     font-weight: 400;
@@ -1457,7 +1465,7 @@ input {
     /*GALLERY 1024*******************************************************/
     .gallery__container {
         padding-top: 80px;
-        padding-bottom: 80px;
+        padding-bottom: 73px;
     }
     .gallery__left {
         width: 280px;
@@ -1465,6 +1473,17 @@ input {
     .wrapper__gallery {
         margin-top: 35px;
         max-width: 597px;
+    }
+    /*Блок catalog*/
+    .catalog__container {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .catalog__product--block {
+        width: 50%;
+    }
+    .accordion__item {
+        width: 57%;
     }
 }
 
@@ -1515,7 +1534,7 @@ input {
     /*Gallery 768******************************************************************/
     .gallery__container {
         padding-top: 80px;
-        padding-bottom: 80px;
+        padding-bottom: 73px;
     }
     .gallery__left {
         margin-left: 0px;
@@ -1540,11 +1559,35 @@ input {
     .gallery__info-adaptiv {
         display: block;
     }
+    /*Блок catalog*/
+    .catalog__container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .catalog__top {
+        margin-bottom: 10px;
+    }
+    .catalog__product {
+        flex-direction: column;
+    }
+    .catalog__product--block {
+        position: relative;
+        width: 100%;
+        order: 2;
+    }
+    .catalog__accordion {
+        width: 100%;
+        margin-left: 0px;
+    }
 }
 
 @media (max-width: 700px) {
     .wrapper__gallery {
         max-width: 320px;
+    }
+    /*Блок catalog*/
+    .catalog__title {
+        display: none;
     }
 }
 
@@ -1605,6 +1648,18 @@ input {
     }
     .wrapper__gallery {
         margin-top: 75px;
+    }
+    .catalog__container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    /*Блок catalog*/
+    .catalog__btn {
+        width: 32px;
+        height: 32px;
+    }
+    .catalog__item:not(:last-child) {
+        margin-right: 30px;
     }
 }
 

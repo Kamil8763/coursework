@@ -255,11 +255,6 @@ function showText(textEl) {
     textEl.style.paddingTop = '25px';
 }
 
-
-
-
-
-
 /*переклчение  информации с фото по художнику*/
 
 const btnBenedetto = document.querySelector('.benedettoLink');
@@ -330,6 +325,15 @@ document.addEventListener('click', function(e) {
         toggleCatalog2();
     }
 });
+
+/****************************************************************************/
+
+
+
+
+
+
+
 /************************************************************************************/
 
 /*Табы*/

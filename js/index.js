@@ -255,6 +255,7 @@ function showText(textEl) {
     textEl.style.paddingTop = '25px';
 }
 
+/*********************/
 /*переклчение  информации с фото по художнику*/
 
 const btnBenedetto = document.querySelector('.benedettoLink');
@@ -350,3 +351,19 @@ window.addEventListener('DOMContentLoaded', function() {
         })
     })
 })
+
+window.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.catalog__btn').forEach(function(tabBtn) {
+        tabBtn.addEventListener('click', function(event) {
+            const path = event.currentTarget.dataset.path;
+
+            document.querySelectorAll('.tabs-active').forEach(function(tabContent) {
+                tabContent.classList.remove('tabs')
+            })
+            document.querySelector(`[data-target="${path}"]`).classList.add('tabs-active');
+        })
+    })
+})
+
+
+/*EVENT**************************************************************************************/

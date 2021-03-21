@@ -1,10 +1,10 @@
-/*код для бургер-меню****************************************************************************/
+/**********************************************************HEADER*************************************************************************/
+/*код для бургер-меню*/
 const btnMenu = document.querySelector('.burger');
 const menu = document.querySelector('.header__menu');
 const toggleMenu = function() {
     menu.classList.toggle('is-active-menu');
 }
-
 btnMenu.addEventListener('click', function(e) {
     e.stopPropagation();
     toggleMenu();
@@ -21,7 +21,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-/*открытие формы поиск******************************************************************************/
+/*открытие формы поиск*/
 
 const btnForm = document.querySelector('.form__btn');
 const form = document.querySelector('.form__input');
@@ -45,7 +45,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-/*выподающие списки**********************************************************************************************************/
+/*выподающие списки*/
 const btnClick1 = document.querySelector('.click1');
 const list1 = document.querySelector('.list1');
 const toggleList1 = function() {
@@ -66,7 +66,7 @@ document.addEventListener('click', function(e) {
         toggleList1();
     }
 });
-
+/********/
 const btnClick2 = document.querySelector('.click2');
 const list2 = document.querySelector('.list2');
 const toggleList2 = function() {
@@ -87,8 +87,7 @@ document.addEventListener('click', function(e) {
         toggleList2();
     }
 });
-
-
+/********/
 const btnClick3 = document.querySelector('.click3');
 const list3 = document.querySelector('.list3');
 const toggleList3 = function() {
@@ -109,7 +108,7 @@ document.addEventListener('click', function(e) {
         toggleList3();
     }
 });
-
+/********/
 const btnClick4 = document.querySelector('.click4');
 const list4 = document.querySelector('.list4');
 const toggleList4 = function() {
@@ -130,7 +129,7 @@ document.addEventListener('click', function(e) {
         toggleList4();
     }
 });
-
+/********/
 const btnClick5 = document.querySelector('.click5');
 const list5 = document.querySelector('.list5');
 const toggleList5 = function() {
@@ -152,10 +151,9 @@ document.addEventListener('click', function(e) {
     }
 });
 
-/*Swiper для блока Hero**************************************************************************/
+/*Swiper для блока Hero***********************************************************************************************************/
 
 const swiper = new Swiper('.hero__swiper', {
-    // Optional parameters
     loop: true,
     spaceBetween: 50,
     height: 100,
@@ -165,46 +163,39 @@ const swiper = new Swiper('.hero__swiper', {
     },
 });
 
-/*секция Галерея************************************************************************************************************/
-
-
-/*choices js фильтр******************************************************/
-
+/********************************************************Block Gallery***************************************************************************/
+/*choices js фильтр**/
 const element = document.querySelector('.select');
 const choices = new Choices(element, {
     searchEnabled: false,
     silent: false,
     itemSelectText: ' ',
-
 });
-
-/*Swiper gallery***********************************************************/
-
+/*Swiper gallery*/
 const swiper1 = new Swiper('.swiper__gallery', {
+
     loop: true,
-    slidesPerView: 1,
-    slidesPerColumn: 2,
-    spaceBetween: 0,
+    spaceBetween: 10,
+    height: 367,
 
     pagination: {
-        el: '.pagination__gallery',
+        el: '.pagination__new',
         type: 'fraction',
     },
 
     navigation: {
-        nextEl: '.next__gallery',
-        prevEl: '.prev__gallery',
+        nextEl: '.next__new',
+        prevEl: '.prev__new',
     },
 
     breakpoints: {
-
-        1450: {
+        1400: {
             slidesPerView: 3,
             slidesPerColumn: 2,
             spaceBetween: 50
         },
 
-        730: {
+        740: {
             slidesPerView: 2,
             slidesPerColumn: 2,
             spaceBetween: 34
@@ -216,23 +207,53 @@ const swiper1 = new Swiper('.swiper__gallery', {
             spaceBetween: 34
         },
     }
-
 });
 
-/*Catalog*****************************************************************/
+/*************************************************************CATALOG***************************************************************************/
+/*Табы*/
+window.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.catalog__btn').forEach(function(tabBtn) {
+            tabBtn.addEventListener('click', function(event) {
+                const path = event.currentTarget.dataset.path;
+                document.querySelectorAll('.tabs').forEach(function(tabContent) {
+                    tabContent.classList.remove('tabs-active');
+                })
+                document.querySelector(`[data-target="${path}"]`).classList.add('tabs-active');
+            })
+        })
+    })
+    /*переклчение  информации с фото по художнику*/
+window.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.accordion__btn').forEach(function(tabAutor) {
+            tabAutor.addEventListener('click', function(event) {
+                const info = event.currentTarget.dataset.info;
+                document.querySelectorAll('.catalog__picture').forEach(function(tabContent) {
+                    tabContent.classList.remove('catalog__picture-active')
+                })
+                document.querySelector(`[data-target="${info}"]`).classList.add('catalog__picture-active');
+            })
+        })
+    })
+    /*accordion*/
 
-/*accordion*/
-
-var accordion = document.querySelector('.accordion');
+let accordion = document.querySelector('.accordion');
 accordion.addEventListener('click', change);
 
 function change(event) {
-    var targ = event.target;
+    let targ = event.target;
     if (targ.tagName !== 'H3') return;
     if (targ.classList.contains('select')) {
         hideAll();
+        hideAll2();
+        hideAll3();
+        hideAll4();
+        hideAll5();
     } else {
         hideAll();
+        hideAll2();
+        hideAll3();
+        hideAll4();
+        hideAll5();
         targ.classList.add('select');
         showText(targ.nextElementSibling);
     }
@@ -241,129 +262,168 @@ function change(event) {
 function hideAll() {
     var h3El = accordion.querySelectorAll('h3');
     var divEl = accordion.querySelectorAll('ul');
-    for (var i = 0; i < h3El.length; i++) {
+    for (let i = 0; i < h3El.length; i++) {
         h3El[i].classList.remove('select');
     }
-    for (var i = 0; i < divEl.length; i++) {
+    for (let i = 0; i < divEl.length; i++) {
         divEl[i].style.height = '0';
         divEl[i].style.padding = '0';
     }
 }
 
 function showText(textEl) {
-    textEl.style.height = '342px';
+    textEl.style.height = 'auto';
     textEl.style.paddingTop = '25px';
+    textEl.style.paddingBottom = '25px';
+    textEl.style.transition = 'all 0.3s ease-in-out';
 }
 
-/*********************/
-/*переклчение  информации с фото по художнику*/
+let accordionTwo = document.querySelector('.accordion-two');
+accordionTwo.addEventListener('click', change);
 
-const btnBenedetto = document.querySelector('.benedettoLink');
-const benedetto = document.querySelector('.benedetto');
-const toggleCatalog = function() {
-    benedetto.classList.toggle('catalog__picture-active');
-}
-
-btnBenedetto.addEventListener('click', function(e) {
-    toggleCatalog();
-});
-
-document.addEventListener('click', function(e) {
-    const target1 = e.target;
-    const its_menu1 = target1 == benedetto || benedetto.contains(target1);
-    const its_btnMenu1 = target1 == btnBenedetto;
-    const menu_is_active1 = benedetto.classList.contains('catalog__picture-active');
-
-    if (!its_menu1 && !its_btnMenu1 && menu_is_active1) {
-        toggleCatalog();
+function hideAll2() {
+    var h3El = accordionTwo.querySelectorAll('h3');
+    var divEl = accordionTwo.querySelectorAll('ul');
+    for (let i = 0; i < h3El.length; i++) {
+        h3El[i].classList.remove('select');
     }
-});
-
-
-
-/**************************************************************/
-const btnDomenico = document.querySelector('.domenicoLink');
-const domenico = document.querySelector('.domenico');
-
-const toggleCatalog1 = function() {
-    domenico.classList.toggle('catalog__picture-active');
+    for (let i = 0; i < divEl.length; i++) {
+        divEl[i].style.height = '0';
+        divEl[i].style.padding = '0';
+    }
 }
 
-btnDomenico.addEventListener('click', function(e) {
-    toggleCatalog1();
-});
+let accordionFree = document.querySelector('.accordion-free');
+accordionFree.addEventListener('click', change);
 
-document.addEventListener('click', function(e) {
-    const target2 = e.target;
-    const its_menu2 = target2 == domenico || domenico.contains(target2);
-    const its_btnMenu2 = target2 == btnDomenico;
-    const menu_is_active2 = domenico.classList.contains('catalog__picture-active');
-
-    if (!its_menu2 && !its_btnMenu2 && menu_is_active2) {
-        toggleCatalog1();
+function hideAll3() {
+    var h3El = accordionFree.querySelectorAll('h3');
+    var divEl = accordionFree.querySelectorAll('ul');
+    for (let i = 0; i < h3El.length; i++) {
+        h3El[i].classList.remove('select');
     }
-});
-/***************************************************************************/
-
-const btnBergonione = document.querySelector('.bergonioneLink');
-const bergonione = document.querySelector('.bergonione ');
-
-const toggleCatalog2 = function() {
-    bergonione.classList.toggle('catalog__picture-active');
+    for (let i = 0; i < divEl.length; i++) {
+        divEl[i].style.height = '0';
+        divEl[i].style.padding = '0';
+    }
 }
 
-btnBergonione.addEventListener('click', function(e) {
-    toggleCatalog2();
-});
+let accordionFour = document.querySelector('.accordion-four');
+accordionFour.addEventListener('click', change);
 
-document.addEventListener('click', function(e) {
-    const target3 = e.target;
-    const its_menu3 = target3 == bergonione || bergonione.contains(target3);
-    const its_btnMenu3 = target3 == btnBergonione;
-    const menu_is_active3 = bergonione.classList.contains('catalog__picture-active');
-
-    if (!its_menu3 && !its_btnMenu3 && menu_is_active3) {
-        toggleCatalog2();
+function hideAll4() {
+    var h3El = accordionFour.querySelectorAll('h3');
+    var divEl = accordionFour.querySelectorAll('ul');
+    for (let i = 0; i < h3El.length; i++) {
+        h3El[i].classList.remove('select');
     }
-});
+    for (let i = 0; i < divEl.length; i++) {
+        divEl[i].style.height = '0';
+        divEl[i].style.padding = '0';
+    }
+}
 
-/****************************************************************************/
+let accordionFive = document.querySelector('.accordion-five');
+accordionFive.addEventListener('click', change);
 
+function hideAll5() {
+    var h3El = accordionFive.querySelectorAll('h3');
+    var divEl = accordionFive.querySelectorAll('ul');
+    for (let i = 0; i < h3El.length; i++) {
+        h3El[i].classList.remove('select');
+    }
+    for (let i = 0; i < divEl.length; i++) {
+        divEl[i].style.height = '0';
+        divEl[i].style.padding = '0';
+    }
+}
+/*************************************************************EVENT*****************************************************************/
 
+const btnEvent = document.querySelector('.event__btn');
+const open = document.querySelector('.none');
+const open1 = document.querySelector('.none1');
+const open2 = document.querySelector('.none2');
 
+const toggleEvent = function() {
+    open.classList.add('event__item-active');
+    open1.classList.add('event__item-active');
+    open2.classList.add('event__item-active');
+    btnEvent.style.display = 'none'
+}
 
-
-
-
-/************************************************************************************/
-
-/*Табы*/
-
-window.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.catalog__btn').forEach(function(tabBtn) {
-        tabBtn.addEventListener('click', function(event) {
-            const path = event.currentTarget.dataset.path;
-
-            document.querySelectorAll('.tabs').forEach(function(tabContent) {
-                tabContent.classList.remove('tabs-active')
-            })
-            document.querySelector(`[data-target="${path}"]`).classList.add('tabs-active');
-        })
-    })
+btnEvent.addEventListener('click', function(o) {
+    o.stopPropagation();
+    toggleEvent();
 })
 
-window.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.catalog__btn').forEach(function(tabBtn) {
-        tabBtn.addEventListener('click', function(event) {
-            const path = event.currentTarget.dataset.path;
+const swiperEvent = new Swiper('.event__swiper', {
+    loop: true,
+    pagination: {
+        el: '.event__pagination',
+        clickable: true,
+    },
 
-            document.querySelectorAll('.tabs-active').forEach(function(tabContent) {
-                tabContent.classList.remove('tabs')
-            })
-            document.querySelector(`[data-target="${path}"]`).classList.add('tabs-active');
+});
+
+/**************************************************************publications****************************************************************/
+
+const swiperPublic = new Swiper('.publications__swiper', {
+    loop: true,
+
+    pagination: {
+        el: '.pagination__product',
+        type: 'fraction',
+    },
+
+    navigation: {
+        nextEl: '.product__next',
+        prevEl: '.product__prev',
+    },
+
+    breakpoints: {
+
+        1350: {
+            slidesPerView: 3,
+            spaceBetween: 50
+        },
+
+        1000: {
+            slidesPerView: 2,
+            spaceBetween: 34,
+        },
+
+        740: {
+            slidesPerView: 2,
+            spaceBetween: 34,
+        },
+
+    }
+
+});
+window.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#formtitle').addEventListener('click', function() {
+            document.querySelector('#formcategory').classList.toggle('open')
         })
     })
-})
+    /* Почему-то неработает???
+    const btnForm1 = document.querySelector('.form__title');
+    const form1 = document.querySelector('.form');
+    const toggleForm1 = function() {
+        form1.classList.toggle('open');
+    }
 
+    btnForm1.addEventListener('click', function(e) {
+        toggleForm1();
+        e.stopPropagation();
+    });
 
-/*EVENT**************************************************************************************/
+    document.addEventListener('click', function(e) {
+        const targetForm1 = e.target;
+        const its_form1 = targetForm1 == form1 || form1.contains(targetForm1);
+        const its_btnForm1 = targetForm1 == btnForm1;
+        const form_is_active1 = form1.classList.contains('open');
+
+        if (!its_form1 && !its_btnForm1 && form_is_active1) {
+            toggleForm();
+        }
+    });*/

@@ -212,29 +212,40 @@ const swiper1 = new Swiper('.swiper__gallery', {
 /*************************************************************CATALOG***************************************************************************/
 /*Табы*/
 window.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.catalog__btn').forEach(function(tabBtn) {
-            tabBtn.addEventListener('click', function(event) {
-                const path = event.currentTarget.dataset.path;
-                document.querySelectorAll('.tabs').forEach(function(tabContent) {
-                    tabContent.classList.remove('tabs-active');
-                })
-                document.querySelector(`[data-target="${path}"]`).classList.add('tabs-active');
+    document.querySelectorAll('.catalog__btn').forEach(function(tabBtn) {
+        tabBtn.addEventListener('click', function(event) {
+            const path = event.currentTarget.dataset.path;
+            document.querySelectorAll('.tabs').forEach(function(tabContent) {
+                tabContent.classList.remove('tabs-active');
             })
+            document.querySelectorAll('.tab').forEach(function(tabBtn) {
+                tabBtn.classList.remove('catalog__btn--active');
+            })
+            document.querySelector(`[data-target="${path}"]`).classList.add('tabs-active');
+            document.querySelector(`[data-path="${path}"]`).classList.add('catalog__btn--active');
         })
     })
-    /*переклчение  информации с фото по художнику*/
+})
+
+/*переклчение  информации с фото по художнику*/
 window.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.accordion__btn').forEach(function(tabAutor) {
-            tabAutor.addEventListener('click', function(event) {
-                const info = event.currentTarget.dataset.info;
-                document.querySelectorAll('.catalog__picture').forEach(function(tabContent) {
-                    tabContent.classList.remove('catalog__picture-active')
-                })
-                document.querySelector(`[data-target="${info}"]`).classList.add('catalog__picture-active');
+    document.querySelectorAll('.accordion__btn').forEach(function(tabAutor) {
+        tabAutor.addEventListener('click', function(event) {
+            const info = event.currentTarget.dataset.info;
+            document.querySelectorAll('.catalog__picture').forEach(function(tabContent) {
+                tabContent.classList.remove('catalog__picture-active')
             })
+
+            document.querySelectorAll('.accordion__btn').forEach(function(tabImg) {
+                tabImg.classList.remove('accordion__btn--active');
+            })
+            document.querySelector(`[data-target="${info}"]`).classList.add('catalog__picture-active');
+            document.querySelector(`[data-info="${info}"]`).classList.add('accordion__btn--active');
         })
     })
-    /*accordion*/
+})
+
+/*accordion*/
 
 let accordion = document.querySelector('.accordion');
 accordion.addEventListener('click', change);
@@ -272,10 +283,9 @@ function hideAll() {
 }
 
 function showText(textEl) {
-    textEl.style.height = 'auto';
-    textEl.style.paddingTop = '25px';
-    textEl.style.paddingBottom = '25px';
-    textEl.style.transition = 'all 0.3s ease-in-out';
+    textEl.style.height = textEl.scrollHeight + 'px';
+    textEl.style.marginBottom = '25px';
+    textEl.style.transition = 'all 1s ease-in-out';
 }
 
 let accordionTwo = document.querySelector('.accordion-two');
@@ -405,25 +415,86 @@ window.addEventListener('DOMContentLoaded', function() {
             document.querySelector('#formcategory').classList.toggle('open')
         })
     })
-    /* Почему-то неработает???
-    const btnForm1 = document.querySelector('.form__title');
-    const form1 = document.querySelector('.form');
-    const toggleForm1 = function() {
-        form1.classList.toggle('open');
+    /*****************************************************************Projects**********************************************************************/
+    /*swiper*/
+const swiperProjects = new Swiper('.swiper__projects', {
+    loop: true,
+
+
+
+    navigation: {
+        nextEl: '.next__projects',
+        prevEl: '.prev__projects',
+    },
+
+    breakpoints: {
+
+        1350: {
+            slidesPerView: 3,
+            spaceBetween: 50,
+        },
+
+        320: {
+            slidesPerView: 2,
+            spaceBetween: 34,
+        },
+
+        100: {
+            slidesPerView: 1,
+            spaceBetween: 34,
+        },
     }
 
-    btnForm1.addEventListener('click', function(e) {
-        toggleForm1();
-        e.stopPropagation();
+});
+
+/*form*/
+
+let selector = document.querySelector("input[type='tel']");
+
+let im = new Inputmask("+7 (999)-999-99-99");
+im.mask(selector);
+
+new JustValidate('.address__form', {
+    rules: {
+        name: {
+            required: true,
+            minLength: 5,
+            maxLength: 30,
+        },
+        tel: {
+            required: true,
+            function(name, value) {
+                const phone = selector.inputmask.unmaskedvalue()
+                console.log(phone)
+                return Number(phone) && phone.length === 10
+            }
+        },
+    },
+});
+
+/*яндекс карта*/
+// Функция ymaps.ready() будет вызвана, когда
+// загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+ymaps.ready(init);
+
+function init() {
+    // Создание карты.
+    var myMap = new ymaps.Map("Mymap", {
+        // Координаты центра карты.
+        // Порядок по умолчанию: «широта, долгота».
+        // Чтобы не определять координаты центра карты вручную,
+        // воспользуйтесь инструментом Определение координат.
+        center: [55.75846306898368, 37.601079499999905],
+        // Уровень масштабирования. Допустимые значения:
+        // от 0 (весь мир) до 19.
+        zoom: 15,
     });
-
-    document.addEventListener('click', function(e) {
-        const targetForm1 = e.target;
-        const its_form1 = targetForm1 == form1 || form1.contains(targetForm1);
-        const its_btnForm1 = targetForm1 == btnForm1;
-        const form_is_active1 = form1.classList.contains('open');
-
-        if (!its_form1 && !its_btnForm1 && form_is_active1) {
-            toggleForm();
-        }
-    });*/
+    var myPlacemark = new ymaps.Placemark([55.75846306898368, 37.601079499999905], {}, {
+        iconLayout: 'default#image',
+        iconImageHref: './img/map.png',
+        iconImageSize: [20, 20],
+        iconImageOffset: [-3, -42]
+    });
+    // Размещение геообъекта на карте.
+    myMap.geoObjects.add(myPlacemark);
+}

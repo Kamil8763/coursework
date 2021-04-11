@@ -1087,13 +1087,10 @@ input {
     margin-right: 50px;
 }
 
-
-/*не реализованый класс, надо сделать так чтобы срабатывал на активный таб*/
-
-.caralog__item--active {
-    padding: 10px;
+.catalog__btn--active {
+    padding: 30px;
     border: 2px solid var(--color-9D5CD0);
-    border-radius: 50px;
+    border-radius: 50%;
 }
 
 .catalog__btn {
@@ -1224,7 +1221,6 @@ input {
     padding-top: 38px;
     padding-bottom: 42px;
     border-top: 1px solid #CACACA;
-    border-bottom: 1px solid #CACACA;
     font-weight: 600;
     font-size: 24px;
     line-height: 32px;
@@ -1233,6 +1229,10 @@ input {
     -webkit-transition: 0.3s ease-in-out;
     -o-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out;
+}
+
+.last {
+    border-bottom: 1px solid #CACACA;
 }
 
 .accordion__title::before {
@@ -1326,6 +1326,8 @@ input {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    padding-top: 0px;
+    padding-bottom: 0px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
@@ -1333,9 +1335,9 @@ input {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     overflow: hidden;
-    -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 .accordion__item {
@@ -1364,6 +1366,10 @@ input {
     transition: all 0.3s ease-in-out;
 }
 
+.select {
+    transition: all 1s ease-in-out;
+}
+
 .accordion__btn:active {
     color: var(--color-7943A4);
     border-color: transparent;
@@ -1374,6 +1380,10 @@ input {
 
 .accordion__btn:focus-visible {
     border: 2px solid var(--color-7943A4);
+}
+
+.accordion__btn--active {
+    color: var(--color-9D5CD0);
 }
 
 
@@ -1815,6 +1825,7 @@ label {
 
 .price__input::-webkit-input-placeholder {
     padding-left: 10px;
+    text-align: start;
     font-weight: 400;
     font-size: 16px;
     line-height: 32px;
@@ -1854,7 +1865,7 @@ label {
 }
 
 .price__input {
-    padding-left: 10px;
+    text-align: start;
     font-weight: 400;
     font-size: 16px;
     line-height: 32px;
@@ -1862,7 +1873,370 @@ label {
 }
 
 
-/***************************************************************новый блок***************************************************************/
+/*Projects**********************************************************************************************************************************/
+
+.projects {
+    margin-bottom: 80px;
+}
+
+.projects__tooltip {
+    position: relative;
+    display: inline;
+}
+
+.projects__title {
+    margin-bottom: 15px;
+}
+
+.projects__info {
+    max-width: 1080px;
+    margin-bottom: 30px;
+}
+
+.tooltip__svg {
+    cursor: pointer;
+}
+
+.tooltip__text {
+    position: absolute;
+    width: 0;
+    padding: 8px 11px 11px 11px;
+    opacity: 0;
+    background-color: #CACACA;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.projects__tooltip:hover .tooltip__text {
+    width: 264px;
+    height: auto;
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.tooltip__text--1 {
+    top: -60px;
+    left: -121px;
+}
+
+.tooltip__text--1::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    margin: auto;
+    left: 0px;
+    bottom: -8px;
+    right: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 9px solid #CACACA;
+    border-bottom: 10px solid transparen;
+}
+
+.tooltip__text--2 {
+    top: -74px;
+    left: -124px;
+}
+
+.tooltip__text--2::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    margin: auto;
+    left: 0px;
+    bottom: -8px;
+    right: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 9px solid #CACACA;
+    border-bottom: 10px solid transparen;
+}
+
+.tooltip__text--3 {
+    top: -43px;
+    left: -109px;
+}
+
+.tooltip__text--3::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    margin: auto;
+    left: 0px;
+    bottom: -8px;
+    right: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 9px solid #CACACA;
+    border-bottom: 10px solid transparen;
+}
+
+.projects__link {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 32px;
+    color: var(--color-C283F3);
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.projects__link:hover {
+    color: var(--color-9D5CD0);
+    transition: color 0.3s ease-in-out;
+}
+
+.projects__link:active {
+    color: var(--color-7943A4);
+    transition: color 0.3s ease-in-out;
+}
+
+.projects__partners {
+    margin-bottom: 23px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    color: var(--color-333);
+}
+
+.swiper__projects {
+    max-width: 1350px;
+    height: 150px;
+}
+
+.slide__projects {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: background-image 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.slide__projects:hover {
+    background-size: contain;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.slider--1 {
+    background-image: url(../img/projects1.png);
+}
+
+.slider--1:hover {
+    background-image: url(../img/projectsHover1.png);
+}
+
+.slider--2 {
+    background-image: url(../img/projects2.png);
+}
+
+.slider--2:hover {
+    background-image: url(../img/projectsHover2.png);
+}
+
+.slider--3 {
+    background-image: url(../img/projects3.png);
+}
+
+.slider--3:hover {
+    background-image: url(../img/projectsHover3.png);
+}
+
+.slider--4 {
+    background-image: url(../img/projects4.png);
+}
+
+.slider--4:hover {
+    background-image: url(../img/projectsHover4.png);
+}
+
+.slider--5 {
+    background-image: url(../img/projects5.png);
+}
+
+.slider--5:hover {
+    background-image: url(../img/projectsHover5.png);
+}
+
+.slider--6 {
+    background-image: url(../img/projects6.png);
+}
+
+.slider--6:hover {
+    background-image: url(../img/projectsHover6.png);
+}
+
+.slider--7 {
+    background-image: url(../img/projects7.png);
+}
+
+.slider--7:hover {
+    background-image: url(../img/projectsHover7.png);
+}
+
+.slider--8 {
+    background-image: url(../img/projects8.png);
+}
+
+.slider--8:hover {
+    background-image: url(../img/projectsHover8.png);
+}
+
+.slider--9 {
+    background-image: url(../img/projects9.png);
+}
+
+.slider--9:hover {
+    background-image: url(../img/projectsHover9.png);
+}
+
+
+/***************************************************************Contacts***************************************************************/
+
+.contacts__title {
+    margin-bottom: 30px;
+}
+
+.contacts__left {
+    width: 35%;
+    padding-top: 109px;
+}
+
+.contacts__right {
+    width: 70%;
+}
+
+.address__info--title {
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--color-333);
+}
+
+.address__info--name {
+    margin-bottom: 27px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    color: var(--color-333);
+}
+
+.address__info--text {
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--color-333);
+}
+
+.address__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.address__input {
+    max-width: 400px;
+    height: 40px;
+    margin-bottom: 23px;
+    padding-left: 24px;
+    border: 1px solid var(--color-333);
+    box-sizing: border-box;
+    border-radius: 100px;
+    outline: none;
+}
+
+.address__input placeholder {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+    color: #999999;
+}
+
+.address__btn {
+    display: block;
+    width: 157px;
+    margin-bottom: 38px;
+    padding: 17px 35px;
+    border-radius: 100px;
+    border: 2px solid #9D5CD0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #9D5CD0;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.address__btn:hover {
+    background-color: var(--color-9D5CD0);
+    color: var(--background-color-E5);
+    transition: all 0.3s ease-in-out;
+}
+
+.address__btn:active {
+    background-color: var(--color-7943A4);
+    color: var(--background-color-E5);
+    transition: all 0.3s ease-in-out;
+}
+
+.address__social {
+    margin-bottom: 124px;
+}
+
+.address__social--watsap {
+    margin-right: 20px;
+}
+
+.address__social--telegram,
+.address__social--watsap {
+    cursor: pointer;
+}
+
+.contacts__right {
+    position: relative;
+    width: 70%;
+}
+
+.map {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*черно-белая карта*/
+
+[class*="ground-pane"] {
+    filter: grayscale(1);
+}
+
+
+/***************************************************************footer***************************************************************/
+
+.footer {
+    background-color: #000;
+}
+
+.footer__container {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__social--vk,
+.footer__social--in {
+    margin-right: 20px;
+}
 
 @media (max-width: 1550px) {
     /*publications adaptive 1550***********************************************************************************************************/
@@ -2103,6 +2477,11 @@ label {
     }
     .product__img {
         margin-bottom: 5px;
+    }
+    /*projects adaptive 1024****************************************************************************************************************/
+    .swiper__projects {
+        max-width: 530px;
+        height: 106px;
     }
 }
 
@@ -2353,7 +2732,7 @@ label {
         height: 32px;
     }
     .catalog__item:not(:last-child) {
-        margin-right: 30px;
+        margin-right: 15px;
     }
     .accordion__item {
         width: 47%;
@@ -2369,6 +2748,11 @@ label {
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
+    }
+    /*projects adaptive 576****************************************************************************************************************/
+    .swiper__projects {
+        max-width: 380px;
+        height: 100px;
     }
 }
 
@@ -2623,5 +3007,10 @@ label {
     .product__btn {
         font-size: 12px;
         line-height: 16px;
+    }
+    /*projects adaptive 320****************************************************************************************************************/
+    .swiper__projects {
+        max-width: 195px;
+        height: 65px;
     }
 }

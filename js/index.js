@@ -247,123 +247,39 @@ window.addEventListener('DOMContentLoaded', function() {
 
 /*accordion*/
 
-let accordion = document.querySelector('.accordion');
-accordion.addEventListener('click', change);
+let accItem = document.getElementsByClassName('accordion__block');
+let accHD = document.getElementsByClassName('accordion__title');
+for (i = 0; i < accHD.length; i++) {
+    accHD[i].addEventListener('click', toggleItem, false);
+}
 
-function change(event) {
-    let targ = event.target;
-    if (targ.tagName !== 'H3') return;
-    if (targ.classList.contains('select')) {
-        hideAll();
-        hideAll2();
-        hideAll3();
-        hideAll4();
-        hideAll5();
-    } else {
-        hideAll();
-        hideAll2();
-        hideAll3();
-        hideAll4();
-        hideAll5();
-        targ.classList.add('select');
-        showText(targ.nextElementSibling);
+function toggleItem() {
+    let itemClass = this.parentNode.className;
+    for (i = 0; i < accItem.length; i++) {
+        accItem[i].className = 'accordion__block close';
+    }
+    if (itemClass == 'accordion__block close') {
+        this.parentNode.className = 'accordion__block open';
     }
 }
 
-function hideAll() {
-    var h3El = accordion.querySelectorAll('h3');
-    var divEl = accordion.querySelectorAll('ul');
-    for (let i = 0; i < h3El.length; i++) {
-        h3El[i].classList.remove('select');
-    }
-    for (let i = 0; i < divEl.length; i++) {
-        divEl[i].style.height = '0';
-        divEl[i].style.padding = '0';
-    }
-}
-
-function showText(textEl) {
-    textEl.style.height = textEl.scrollHeight + 'px';
-    textEl.style.marginBottom = '25px';
-    textEl.style.transition = 'all 1s ease-in-out';
-}
-
-let accordionTwo = document.querySelector('.accordion-two');
-accordionTwo.addEventListener('click', change);
-
-function hideAll2() {
-    var h3El = accordionTwo.querySelectorAll('h3');
-    var divEl = accordionTwo.querySelectorAll('ul');
-    for (let i = 0; i < h3El.length; i++) {
-        h3El[i].classList.remove('select');
-    }
-    for (let i = 0; i < divEl.length; i++) {
-        divEl[i].style.height = '0';
-        divEl[i].style.padding = '0';
-    }
-}
-
-let accordionFree = document.querySelector('.accordion-free');
-accordionFree.addEventListener('click', change);
-
-function hideAll3() {
-    var h3El = accordionFree.querySelectorAll('h3');
-    var divEl = accordionFree.querySelectorAll('ul');
-    for (let i = 0; i < h3El.length; i++) {
-        h3El[i].classList.remove('select');
-    }
-    for (let i = 0; i < divEl.length; i++) {
-        divEl[i].style.height = '0';
-        divEl[i].style.padding = '0';
-    }
-}
-
-let accordionFour = document.querySelector('.accordion-four');
-accordionFour.addEventListener('click', change);
-
-function hideAll4() {
-    var h3El = accordionFour.querySelectorAll('h3');
-    var divEl = accordionFour.querySelectorAll('ul');
-    for (let i = 0; i < h3El.length; i++) {
-        h3El[i].classList.remove('select');
-    }
-    for (let i = 0; i < divEl.length; i++) {
-        divEl[i].style.height = '0';
-        divEl[i].style.padding = '0';
-    }
-}
-
-let accordionFive = document.querySelector('.accordion-five');
-accordionFive.addEventListener('click', change);
-
-function hideAll5() {
-    var h3El = accordionFive.querySelectorAll('h3');
-    var divEl = accordionFive.querySelectorAll('ul');
-    for (let i = 0; i < h3El.length; i++) {
-        h3El[i].classList.remove('select');
-    }
-    for (let i = 0; i < divEl.length; i++) {
-        divEl[i].style.height = '0';
-        divEl[i].style.padding = '0';
-    }
-}
 /*************************************************************EVENT*****************************************************************/
 
 const btnEvent = document.querySelector('.event__btn');
 const open = document.querySelector('.none');
 const open1 = document.querySelector('.none1');
-const open2 = document.querySelector('.none2');
+//const open2 = document.querySelector('.none2');
 
 const toggleEvent = function() {
     open.classList.add('event__item-active');
     open1.classList.add('event__item-active');
-    open2.classList.add('event__item-active');
-    btnEvent.style.display = 'none'
+    btnEvent.classList.add('event__btn--close');
 }
 
 btnEvent.addEventListener('click', function(o) {
     o.stopPropagation();
     toggleEvent();
+
 })
 
 const swiperEvent = new Swiper('.event__swiper', {
@@ -418,8 +334,7 @@ window.addEventListener('DOMContentLoaded', function() {
     /*****************************************************************Projects**********************************************************************/
     /*swiper*/
 const swiperProjects = new Swiper('.swiper__projects', {
-    loop: true,
-
+    loop: false,
 
 
     navigation: {
@@ -434,7 +349,7 @@ const swiperProjects = new Swiper('.swiper__projects', {
             spaceBetween: 50,
         },
 
-        320: {
+        321: {
             slidesPerView: 2,
             spaceBetween: 34,
         },
@@ -497,4 +412,30 @@ function init() {
     });
     // Размещение геообъекта на карте.
     myMap.geoObjects.add(myPlacemark);
+}
+
+
+
+ymaps.ready(init1);
+
+function init1() {
+    // Создание карты.
+    var myMap1 = new ymaps.Map("Mymap1", {
+        // Координаты центра карты.
+        // Порядок по умолчанию: «широта, долгота».
+        // Чтобы не определять координаты центра карты вручную,
+        // воспользуйтесь инструментом Определение координат.
+        center: [55.75846306898368, 37.601079499999905],
+        // Уровень масштабирования. Допустимые значения:
+        // от 0 (весь мир) до 19.
+        zoom: 15,
+    });
+    var myPlacemark1 = new ymaps.Placemark([55.75846306898368, 37.601079499999905], {}, {
+        iconLayout: 'default#image',
+        iconImageHref: './img/map.png',
+        iconImageSize: [20, 20],
+        iconImageOffset: [-3, -42]
+    });
+    // Размещение геообъекта на карте.
+    myMap1.geoObjects.add(myPlacemark1);
 }

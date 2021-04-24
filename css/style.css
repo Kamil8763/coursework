@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -1067,6 +1074,7 @@ input {
 }
 
 .catalog__top {
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin-bottom: 15px;
     -webkit-box-align: center;
@@ -1079,7 +1087,11 @@ input {
 }
 
 .catalog__list {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -1087,15 +1099,15 @@ input {
     margin-right: 50px;
 }
 
-.catalog__btn--active {
-    padding: 30px;
-    border: 2px solid var(--color-9D5CD0);
-    border-radius: 50%;
+.catalog__item .catalog__btn--active {
+    border-color: var(--color-9D5CD0);
 }
 
 .catalog__btn {
     width: 46px;
     height: 46px;
+    padding: 30px;
+    border: 2px solid transparent;
     border-radius: 50px;
     background-repeat: no-repeat;
     background-position: center;
@@ -1221,6 +1233,7 @@ input {
     padding-top: 38px;
     padding-bottom: 42px;
     border-top: 1px solid #CACACA;
+    border-bottom: 1px solid #CACACA;
     font-weight: 600;
     font-size: 24px;
     line-height: 32px;
@@ -1321,23 +1334,37 @@ input {
     transition: all 0.1s linear;
 }
 
-.accordion__list {
+.close .accordion__list {
     height: 0px;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.open .accordion__list {
+    padding-top: 25px;
+    padding-bottom: 38px;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.accordion__list {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     padding-top: 0px;
     padding-bottom: 0px;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     overflow: hidden;
-    -webkit-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 .accordion__item {
@@ -1367,6 +1394,8 @@ input {
 }
 
 .select {
+    -webkit-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
 
@@ -1525,6 +1554,10 @@ input {
 
 .event__btn:focus-visible {
     outline: 1px solid var(--color-C283F3);
+}
+
+.event__btn--close {
+    display: none;
 }
 
 .event__swiper {
@@ -1899,9 +1932,12 @@ label {
 
 .tooltip__text {
     position: absolute;
-    width: 0;
+    width: 264px;
     padding: 8px 11px 11px 11px;
     opacity: 0;
+    -webkit-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    transform: scaleX(0);
     background-color: #CACACA;
     font-weight: 600;
     font-size: 12px;
@@ -1909,13 +1945,20 @@ label {
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 
 .projects__tooltip:hover .tooltip__text {
     width: 264px;
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
     height: auto;
     opacity: 1;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 
@@ -1958,8 +2001,8 @@ label {
 }
 
 .tooltip__text--3 {
-    top: -43px;
-    left: -109px;
+    top: -46px;
+    left: -124px;
 }
 
 .tooltip__text--3::before {
@@ -1982,16 +2025,22 @@ label {
     line-height: 32px;
     color: var(--color-C283F3);
     cursor: pointer;
+    -webkit-transition: color 0.3s ease-in-out;
+    -o-transition: color 0.3s ease-in-out;
     transition: color 0.3s ease-in-out;
 }
 
 .projects__link:hover {
     color: var(--color-9D5CD0);
+    -webkit-transition: color 0.3s ease-in-out;
+    -o-transition: color 0.3s ease-in-out;
     transition: color 0.3s ease-in-out;
 }
 
 .projects__link:active {
     color: var(--color-7943A4);
+    -webkit-transition: color 0.3s ease-in-out;
+    -o-transition: color 0.3s ease-in-out;
     transition: color 0.3s ease-in-out;
 }
 
@@ -2004,9 +2053,16 @@ label {
 }
 
 .swiper__projects {
-    max-width: 1350px;
+    /* max-width: 1350px;*/
     height: 150px;
 }
+
+
+/*
+  .swiper__slide {
+      max-width: 450px;
+  }
+*/
 
 .slide__projects {
     display: block;
@@ -2015,6 +2071,8 @@ label {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    -webkit-transition: background-image 0.5s ease-in-out;
+    -o-transition: background-image 0.5s ease-in-out;
     transition: background-image 0.5s ease-in-out;
     cursor: pointer;
 }
@@ -2022,6 +2080,8 @@ label {
 .slide__projects:hover {
     background-size: contain;
     background-position: center;
+    -webkit-transition: background-image 0.5s ease-in-out;
+    -o-transition: background-image 0.5s ease-in-out;
     transition: background-image 0.5s ease-in-out;
 }
 
@@ -2097,6 +2157,24 @@ label {
     background-image: url(../img/projectsHover9.png);
 }
 
+.prev__projects {
+    left: 0;
+}
+
+.prev__projects::after {
+    font-size: 15px;
+    padding-left: 7px;
+    padding-top: 2px;
+}
+
+.next__projects {
+    right: 0;
+}
+
+.next__projects::after {
+    padding-left: 10px;
+}
+
 
 /***************************************************************Contacts***************************************************************/
 
@@ -2106,11 +2184,16 @@ label {
 
 .contacts__left {
     width: 35%;
+    margin-right: 30px;
     padding-top: 109px;
 }
 
 .contacts__right {
     width: 70%;
+}
+
+.contacts__map {
+    display: none;
 }
 
 .address__info--title {
@@ -2138,7 +2221,12 @@ label {
 }
 
 .address__form {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
 }
 
@@ -2148,6 +2236,7 @@ label {
     margin-bottom: 23px;
     padding-left: 24px;
     border: 1px solid var(--color-333);
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border-radius: 100px;
     outline: none;
@@ -2173,18 +2262,24 @@ label {
     text-align: center;
     color: #9D5CD0;
     cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 
 .address__btn:hover {
     background-color: var(--color-9D5CD0);
     color: var(--background-color-E5);
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 
 .address__btn:active {
     background-color: var(--color-7943A4);
     color: var(--background-color-E5);
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 
@@ -2218,6 +2313,7 @@ label {
 /*черно-белая карта*/
 
 [class*="ground-pane"] {
+    -webkit-filter: grayscale(1);
     filter: grayscale(1);
 }
 
@@ -2229,13 +2325,34 @@ label {
 }
 
 .footer__container {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
 .footer__social--vk,
 .footer__social--in {
     margin-right: 20px;
+}
+
+.footer__svg {
+    cursor: pointer;
+}
+
+.footer__svg path {
+    -webkit-transition: fill 0.3s ease-in-out;
+    -o-transition: fill 0.3s ease-in-out;
+    transition: fill 0.3s ease-in-out;
+}
+
+.footer__svg:hover path {
+    fill: #fff;
+    -webkit-transition: fill 0.3s ease-in-out;
+    -o-transition: fill 0.3s ease-in-out;
+    transition: fill 0.3s ease-in-out;
 }
 
 @media (max-width: 1550px) {
@@ -2480,7 +2597,6 @@ label {
     }
     /*projects adaptive 1024****************************************************************************************************************/
     .swiper__projects {
-        max-width: 530px;
         height: 106px;
     }
 }
@@ -2750,9 +2866,53 @@ label {
         justify-content: center;
     }
     /*projects adaptive 576****************************************************************************************************************/
+    .projects {
+        margin-bottom: 50px;
+    }
     .swiper__projects {
         max-width: 380px;
         height: 100px;
+    }
+    /*contacts adaptive 576px************************************************************************************************************/
+    .contacts__block {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .contacts__left {
+        width: 100%;
+        margin-left: 0px;
+        padding-top: 0px;
+    }
+    .contacts__map {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        max-width: 576px;
+        height: 320px;
+    }
+    .contacts__right {
+        display: none;
+    }
+    .contacts__title {
+        margin-bottom: 20px;
+    }
+    .address__info--name {
+        margin-bottom: 20px;
+    }
+    .address__info--text {
+        text-align: center;
+    }
+    .address__form {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .address__social {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
     }
 }
 
@@ -2886,6 +3046,12 @@ label {
     .caralog__item--active {
         padding: 6px;
     }
+    .catalog__item:not(:last-child) {
+        margin-right: 0px;
+    }
+    .catalog__btn {
+        padding: 25px;
+    }
     .catalog__title {
         display: block;
         margin-bottom: 11px;
@@ -3010,7 +3176,24 @@ label {
     }
     /*projects adaptive 320****************************************************************************************************************/
     .swiper__projects {
-        max-width: 195px;
         height: 65px;
+    }
+    /*footer 320px**********************************************************************************************************************************/
+    .footer__container {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding: 20px 0px;
+    }
+    .footer__social {
+        -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1;
+    }
+    .header__logo {
+        -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+        order: 2;
     }
 }
